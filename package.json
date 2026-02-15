@@ -2,7 +2,6 @@
   "name": "tea-backend",
   "version": "1.0.0",
   "description": "a backend at video channel - youtube",
-   
   "keywords": [
     "javascript",
     "backend",
@@ -14,5 +13,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon"
+  },
+  "devDependencies": {
+    "prettier": "^3.8.1"
   }
 }
