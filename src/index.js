@@ -30,7 +30,6 @@ connectDB()
 
 
 
-
 //Connect Database type 1 in index.js file 
 /*
 import express from "express"
