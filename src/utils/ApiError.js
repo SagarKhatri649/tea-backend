@@ -22,4 +22,4 @@
     }
   }
  }
- export {APiError}
+ export default APiError;
