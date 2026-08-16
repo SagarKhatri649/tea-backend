@@ -1,3 +1,6 @@
+// part 3 database approach -2
+
+
 import mongoose from "mongoose";
 import { DB_NAME } from "../constants.js";
 
@@ -14,7 +17,7 @@ const connectDB = async () =>{
 
     console.log("MONGODB connection error", error);
     process.exit(1)
-
+    //process is refernce to our current application running on process .exit is method
 
 
   }

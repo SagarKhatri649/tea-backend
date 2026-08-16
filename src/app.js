@@ -1,3 +1,5 @@
+//part -5 express app
+
 import express from "express"
 import cors from "cors"
 
@@ -10,10 +12,14 @@ app.use(cors({
     Credential: true
 }))
 
-app.use(express.json({limit: "16kb"}))
-app.use(express.urlencoded({extended:true,limit: "16kb"}))
-app.use(express.static("public"))
-app.use(cookieParser())
+//configurations 
+
+app.use(express.json({limit: "16kb"}))  //jab form se data aaya
+app.use(express.urlencoded({extended:true,limit: "16kb"}))  // jaba data url se aaya ,extende means - nested object
+
+app.use(express.static("public")) // job kuch file,pdf save krna ha 
+
+app.use(cookieParser())//server se user k browser ki cooki access kr paau or set kr paau
 
 
 

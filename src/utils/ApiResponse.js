@@ -1,10 +1,16 @@
+//part - 8 utility Api response
+
+
+//Repose handling  class
+
+
 class ApiResponse {
 
   constructor(statusCode,data,message ="Success"){
-    this.statusCode = statusCode
+    this.statusCode = statusCode 
     this.data = data
     this.message = message
-    this.success = statusCode < 400
+    this.success = statusCode < 400 //server status code
   }
 }
 

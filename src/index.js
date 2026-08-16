@@ -1,4 +1,9 @@
+
 // require('dotenv').config({path: '.env'})
+
+
+//part -4  database improved version 
+
 
 import dotenv from "dotenv"
 import connectDB from "./db/index.js";
@@ -29,8 +34,9 @@ connectDB()
 
 
 
+//part -2 database connect 
 
-//Connect Database type 1 in index.js file 
+//Connect Database approach  1 in index.js file 
 /*
 import express from "express"
 const app = express()

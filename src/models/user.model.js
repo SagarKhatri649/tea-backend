@@ -1,3 +1,7 @@
+//part - 9 user model
+
+
+
 import mongoose,{Schema} from "mongoose";
 import bcrypt from "bcrypt";
 import  JsonWebTokenError  from "jsonwebtoken";
@@ -54,6 +58,7 @@ const userSchema = new Schema (
   timestamps:true
 })
 
+//part - 9.2 bcrypt and jwt
 
 userSchema.pre("save", async function (next) {
   if(!this.isModified("password")) return next();
