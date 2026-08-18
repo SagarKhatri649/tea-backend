@@ -38,7 +38,7 @@ const userSchema = new Schema (
       type: String, // cloudinary url
       required:true,
     },
-    converImage:{
+    coverImage:{
       tpye: String, // cloudinary url
     },
     watchHistory:{
@@ -58,8 +58,9 @@ const userSchema = new Schema (
   timestamps:true
 })
 
-//part - 9.2 bcrypt and jwt
+//part - 9.2 bcrypt and jwt  (Password Hashing)
 
+//Password Hashing (Before Save)
 userSchema.pre("save", async function (next) {
   if(!this.isModified("password")) return next();
 
@@ -68,11 +69,14 @@ userSchema.pre("save", async function (next) {
   
 })
 
+//Compare Password
 userSchema.methods.isPasswordCorrect = async function (password) {
 
   return await bcrypt.compare(password,this.password) 
 }
 
+
+//Generate Access Token
 userSchema.methods.generateAccessToken = function(){
   return jwt.sign(
     {
@@ -88,6 +92,9 @@ userSchema.methods.generateAccessToken = function(){
     }
   )
 }
+
+
+//Generate Refresh Token
 userSchema.methods.generateRefreshToken = function(){
   return jwt.sign(
     {
@@ -100,3 +107,36 @@ userSchema.methods.generateRefreshToken = function(){
   )
 }
 export const User = mongoose.model("User" ,userSchema)
+
+// Access token: Contains full user data
+// Refresh token: Only contains ID
+
+// Why? Refresh token is sent less frequently
+// Less chance of being stolen
+// Contains minimal data even if stolen
+
+/**
+ 
+
+1. User Login
+   ├─ Check password ✅
+   ├─ Generate access token (15 min)
+   ├─ Generate refresh token (7 days)
+   └─ Send both to frontend
+
+2. Frontend Usage
+   ├─ Access token → Stored in memory/localStorage
+   ├─ Refresh token → Stored in httpOnly cookie (secure)
+   └─ Send access token with EVERY request
+
+3. Access Token Expires
+   ├─ Frontend: "Token expired!"
+   ├─ Frontend sends refresh token to backend
+   ├─ Backend verifies refresh token
+   ├─ Backend generates NEW access token
+   └─ Frontend continues using new token
+
+4. Refresh Token Expires
+   ├─ Both tokens invalid
+   └─ User must login again
+ */

@@ -1,4 +1,5 @@
 //part -5 express app
+//midddleware setup
 
 import express from "express"
 import cors from "cors"
@@ -23,14 +24,15 @@ app.use(cookieParser())//server se user k browser ki cooki access kr paau or set
 
 
 
-//routes import
+//part- 14
+// routes import
 
-import userRouter from './routes/user.routes.js'
+import userRouter from './routes/user.routes.js' //Import user routes
 
 
 // routes declaration
 
-app.use("/api/v1/users",userRouter)
+app.use("/api/v1/users",userRouter)     //Mount at /api/v1/users
 
 //ex- http://localhost:8000/api/v1/user/register
 

@@ -16,7 +16,7 @@ const connectDB = async () =>{
   catch(error){
 
     console.log("MONGODB connection error", error);
-    process.exit(1)
+    process.exit(1)//// Kill the app if DB fails 
     //process is refernce to our current application running on process .exit is method
 
 

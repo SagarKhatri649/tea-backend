@@ -2,7 +2,7 @@
 // require('dotenv').config({path: '.env'})
 
 
-//part -4  database improved version 
+//part -4  database improved version (approached 3)
 
 
 import dotenv from "dotenv"
@@ -12,7 +12,7 @@ import connectDB from "./db/index.js";
 import { app } from "./app.js"
 
  
-dotenv.config({
+dotenv.config({ // Load environment variables from .env file first
 
   path: '.env'
 })

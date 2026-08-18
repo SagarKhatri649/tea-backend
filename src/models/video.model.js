@@ -49,5 +49,39 @@ const videoSchema = new Schema({
     timestamps:true
 })
 
+//Pagination Plugin
 videoSchema.plugin(mongooseAggregatePaginate)
 export const Video = mongoose.model("Video" ,videoSchema) 
+
+
+
+
+
+
+/*
+
+Solution: Pagination
+
+Page 1: Videos 1-10
+Page 2: Videos 11-20
+Page 3: Videos 21-30
+...
+
+What plugin does:
+
+javascript
+// Get page 2, 10 videos per page
+const result = await Video.aggregatePaginate(
+  pipeline,
+  { page: 2, limit: 10 }
+)
+
+// Returns:
+{
+  docs: [video11, video12, ...video20],
+  totalDocs: 1000,
+  totalPages: 100,
+  page: 2,
+  hasNextPage: true
+}
+*/

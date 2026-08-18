@@ -1,17 +1,17 @@
-//part 
+//part - 11 utility cloudinary
 
 
 import { v2 as cloudinary } from 'cloudinary';
 import fs from "fs";
 
-
+//configuration
 cloudinary.config({ 
         cloud_name: process.env.CLOUDINARY_CLOUD_NAME, 
         api_key: process.env.CLOUDINARY_API_KEY,
         api_secret:process.env.CLOUDINARY_API_SECRET, // Click 'View API Keys' above to copy your API secret
    });
 
-
+//upload function
    const uploadOnCloudinary = async(localFilePath) =>{
     try{
 
@@ -27,6 +27,8 @@ cloudinary.config({
       console.log("file is uploaded on cloudinary",
       response.url);
       return response;
+
+      //handle failure
     }catch(error){
 
       fs.unlink(localFilePath) // remove the locally saved temparary file as the upload operation got failed
@@ -35,3 +37,14 @@ cloudinary.config({
 }
 
 export {uploadOnCloudinary}
+
+
+
+//v2 = Cloudinary API Version
+//fs = Built-in Node.js module to work with files
+
+/*fs.readFileSync()   // Read file
+fs.writeFileSync()  // Write file
+fs.unlink()         // Delete file ✅
+fs.mkdir() 
+ */
